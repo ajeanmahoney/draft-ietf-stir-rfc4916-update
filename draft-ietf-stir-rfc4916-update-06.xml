@@ -237,8 +237,13 @@ are to be interpreted as described in BCP 14 <xref target="RFC2119" format="defa
     </section>
     <section anchor="IANA" numbered="true" toc="default">
       <name>IANA Considerations</name>
-      <t>This specification defines a new PASSporT type for the PASSport Extensions Registry defined in <xref target="RFC8225" format="default"/>, which resides at https://www.iana.org/assignments/passport/passport.xhtml#passport-extensions:</t>
-      <t>"rsp" as defined in [RFCThis] <xref target="rsp" format="default"/></t>
+      <t>This specification defines a new PASSporT type for the "Personal Assertion Token (PASSporT) Extensions" registry defined in <xref target="RFC8225" format="default"/>, which resides at <eref target="https://www.iana.org/assignments/passport/"/>:</t>
+      <dl>
+        <dt>ppt value</dt>
+        <dd>"rsp"</dd> 
+        <dt>Reference</dt>
+        <dd>[RFCThis] <xref target="rsp" format="default"/></dd>
+      </dl>
     </section>
     <section anchor="priv" numbered="true" toc="default">
       <name>Privacy Considerations</name>
