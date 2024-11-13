@@ -62,7 +62,7 @@
    There also exists a related problem: the identity of the party who answers a call can differ from that of
    the initial called party for various innocuous reasons such as call forwarding, but in certain network environments, it is possible for attackers to hijack the route of a called number and direct it to a resource controlled by the attacker. It can potentially be difficult to determine why a call reached a
    target other than the one originally intended, and whether the party ultimately reached by the call is one that
-   the caller should trust. The lack of mutual authentication of parties moreover makes it possible for outside attackers to inject forged messages (e.g. BYE) into a SIP session.
+   the caller should trust. The lack of mutual authentication of parties moreover makes it possible for outside attackers to inject forged messages (e.g., BYE) into a SIP session.
       </t>
       <t>
         The property of providing identity of the called party to the calling party is called "connected identity." Previous work on connected identity focused on fixing the core semantics of SIP. <xref target="RFC4916" format="default"/> allowed a mid-dialog request, such as an <xref target="RFC3311" format="default">UPDATE</xref>,
@@ -77,7 +77,7 @@
    in the backwards direction.
       </t>
       <t>
-   One of the original motivating use cases for <xref target="RFC4916" format="default"/> was the use of connected identity with the SIP <xref target="RFC4474" format="default">Identity</xref> header field. While a mid-dialog request in the backwards direction (e.g. UPDATE) can be signed with Identity like
+   One of the original motivating use cases for <xref target="RFC4916" format="default"/> was the use of connected identity with the SIP <xref target="RFC4474" format="default">Identity</xref> header field. While a mid-dialog request in the backwards direction (e.g., UPDATE) can be signed with Identity like
    any other SIP request, forwarded requests would not be properly signed without the ability to change the mid-dialog From header field value: Carol, say, would not be able to furnish a key to sign for Bob's identity, if Carol wanted to sign requests in the backwards direction. Carol would however be able to sign for her own identity in the From header field value, if mid-dialog requests in the backwards direction were permitted to vary from the original To header field value.
       </t>
       <t>
@@ -170,7 +170,7 @@ are to be interpreted as described in BCP 14 <xref target="RFC2119" format="defa
 	The use of the connected identity mechanism here specified is not limited to provisional dialog requests. Once a dialog has been established with connected identity, any re-INVITEs from either the originating and terminating side, as well as any BYE requests, SHOULD contain Identity headers with valid PASSporTs. If only the terminating side supports connected identity, obviously the originator cannot be expected to know that it needs to send PASSporTs for subsequent requests like BYE. Doing so prevents third-parties from spoofing any mid-dialog requests in order to redirect media or similarly interfere with communications, as well as preventing denial of service teardowns by attackers, so it has clear benefits and is thus RECOMMENDED.
       </t>
       <t>
-	Theoretically, any SIP requests in a dialog could be signed in this fashion, though it is unclear how valuable it would be for some (e.g. OPTIONS). Requests with specialized payloads such as INFO or MESSAGE, however, would require additional specification for how integrity protection for their bodies could be implemented. Some work has been done toward that for MESSAGE (see <xref target="RFC9475" format="default"/>. This specification thus does not recommend PASSporTs for any requests sent in a dialog other than INVITE, UPDATE, and BYE.
+	Theoretically, any SIP requests in a dialog could be signed in this fashion, though it is unclear how valuable it would be for some (e.g., OPTIONS). Requests with specialized payloads such as INFO or MESSAGE, however, would require additional specification for how integrity protection for their bodies could be implemented. Some work has been done toward that for MESSAGE (see <xref target="RFC9475" format="default"/>. This specification thus does not recommend PASSporTs for any requests sent in a dialog other than INVITE, UPDATE, and BYE.
       </t>
       <t>
 	It might seem tempting to require that, if an INVITE has been sent with an Identity header containing a PASSporT, any CANCEL request received for the dialog initiated by that INVITE must also contain an Identity header with a PASSporT. However, CANCEL requests can also be sent by stateful proxy servers engaged in parallel forking; for example, when branches need to be canceled because a final response has been received from a UAS. This specification does not forbid a User Agent Client (UAC) from sending a CANCEL for its own PASSporT-protected INVITE requests, as there may be limited use cases where it would be useful to relying parties, but recipients of a CANCEL should not expect PASSporTs to be present in connected identity cases.
