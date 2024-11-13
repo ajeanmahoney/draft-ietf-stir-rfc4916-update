@@ -209,19 +209,19 @@ are to be interpreted as described in BCP 14 <xref target="RFC2119" format="defa
       <t>
 	  The header of a "rsp" PASSporT shows a "ppt" of "rsp":
       </t>
-      <artwork name="" type="" align="left" alt=""><![CDATA[
+      <sourcecode type="json"><![CDATA[
 { "typ":"passport",
   "ppt":"rsp",
   "alg":"ES256",
   "x5u":"https://www.example.com/cert.cer" }
-		]]></artwork>
+		]]></sourcecode>
       <t>
 	The payload of an "rsp" PASSporT looks entirely like a normal PASSporT - the only difference is in semantics, as the certificate signs for the "dest" header field rather than the "orig".</t>
-      <artwork name="" type="" align="left" alt=""><![CDATA[
+      <sourcecode type="json"><![CDATA[
    { "orig":{"tn":"12155551212"},
      "dest":{"tn":["12155551214"]},
      "iat":1443208345 }
-		]]></artwork>
+		]]></sourcecode>
       <t>
 	No restrictions are placed here on additional elements appearing in the payload of an "rsp" type PASSporT.
       </t>
